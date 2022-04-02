@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 //connect to a data base named flights
-mongoose.connect('mongodb://localhost.flights', {
+mongoose.connect('mongodb://localhost/flights', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

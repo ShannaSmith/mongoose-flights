@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flights</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+      <div class="card-header">Header</div>
+      <div class="card-body">
+        <h5 class="card-title"><%=title%> </h5>
+          Welcome to Flight World!
+          <table class="table table-striped card-text">
+            <thead>
+              <tr>
+                <th scope="col">Airline </th>
+                <th scope="col">Airport</th>
+                <th scope="col">Flight No.</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%flights.forEach(function(f) {%> 
+              <tr>
+                <th scope="row"></th>
+                <td><%f.airline%></td>  
+                <td><%=f.airport%> </td>
+                <td><%f.flightNo%></td>
+                <td><%f.departs%></td>
+                <td><a href="/flights/<%= f._id%>">Details</a></td>
+              </tr> 
+              <% }); %>   
+            </tbody>
+          </table>
+        </p>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

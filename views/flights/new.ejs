@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+   <form id="new-form" action="/movies" method="POST">
+    <label>Airline:</label>
+   <select name="airline">  
+    <option value="American">American</option>
+    <option value="Delta">Delta</option>
+    <option value="Southwest">Southwest</option>
+    <option value="United">United</option>
+   </select>
+   <select name="airport">
+    <option value="ATL">ATL</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+   </select>
+  <label>Flight No.</label>
+  <input type="number" name="flightNo">
+  <label>Departure Time</label>
+  <input type="Date" name="departs">
+  <input type="submit" value="Add Movie">
+</form>
+  </body>
+</html>
