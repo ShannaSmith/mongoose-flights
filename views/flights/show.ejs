@@ -37,7 +37,7 @@
           <td><%= d.airport %> </td>
           <td><%= d.arrival %></td>
         </tr>
-     <% });%>
+     <% })%>
      <% } else { %>
       <h5>No Arrival Information Yet</h5>
       <% } %>
@@ -56,6 +56,50 @@
       <input type="datetime-local" name="arrival">
       <input type="submit" value="Add Destination">
     </form> 
+    <h5>Ticket Kiosk</h5>
+   <% if (ticket.length) { %>
+    <table class=" card-text table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Seat Number</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+     <tbody>     
+        <tr>
+          <% ticket.forEach(function(t) { %>
+                <td><%= t.seat %></td>
+                <td>$<%= t.price %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+        </table>
+        <% } else { %>
+         <h5>All Flights are Fully Booked, Thank you for Flying with Flight World!</h5>
+         <% } %> 
+         <a href="/flights/<%=flight._id%>/tickets/new">Buy Ticket</a>
+         <h5>Destinations:</h5>
+         <% if (flight.destinations.length) { %>
+          <table class=" card-text table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Arrival</th>
+                <th scope="col">Airport</th>
+              </tr>
+            </thead>
+           <tbody>
+            <% flight.destinations.forEach(function(d) { %>  
+                <%console.log(d.airport)%>
+              <tr>
+                <td><%= d.airport %></td>
+                <td><%= d.arrival %></td>
+                </tr>
+                <% }) %>
+              </tbody>
+              </table>
+              <% } else { %>
+               <h5>No New Flights</h5>    
+         <% } %>
   </div>
 </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

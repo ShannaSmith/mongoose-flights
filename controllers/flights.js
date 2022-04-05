@@ -1,6 +1,8 @@
 //create a Flight model
 const res = require('express/lib/response');
 const Flight = require('../models/flight');
+const Ticket = require('../models/ticket');
+
 
 function show(req, res) {
     Flight.findById(req.params.id, function ( err, flightFromTheDatabase){
@@ -19,10 +21,14 @@ function newClientFlight(req, res) {
 
 
 function index(req, res) {
-    Flight.find({}, function (err, flights) {
-        res.render("flights/index", {
-            flights, 
-            title: "Flight Log",
+    Flight.find({}, function (err, flight) {
+        Ticket.find({flight: flight._id}, function(err, ticket){
+            res.render("flights/show", {
+                flight: flight,
+                ticket: ticket, 
+                title: "Flight Log"
+        })
+        console.log(flight);
         });
     });
 }
