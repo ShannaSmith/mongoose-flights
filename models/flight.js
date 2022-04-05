@@ -7,10 +7,13 @@ const destinationSchema = new Schema({
     enum:['AUS', 'DFW', 'DEN', 'LAX', 'SAN']
     },
     arrival:{
-    type: Date,
-    timestamps: true
+    type: Date 
     }
-})
+       
+    },{
+        timestamps: true
+    }
+);
 const flightSchema = new Schema({
     airline: { 
         type: String,

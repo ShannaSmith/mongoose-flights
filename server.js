@@ -1,15 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const methodOverride = require('method-override');
 //require config/database module
 require('./config/database');
-var indexRouter = require('./routes/index');
-var flightsRouter = require('./routes/flights');
-
-var app = express();
+const indexRouter = require('./routes/index');
+const flightsRouter = require('./routes/flights');
+const destinationsRouter = require('./routes/destinations');
+const ticketsRouter = require('./routes/tickets');
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,6 +23,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use('/flights', flightsRouter);
+app.use('/', destinationsRouter),
+app.use('/', ticketsRouter);
 app.use('/', indexRouter);
 
 

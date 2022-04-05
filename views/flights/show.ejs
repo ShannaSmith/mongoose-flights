@@ -33,9 +33,9 @@
        
          <% if (flight.destinations.length) { %>
          
-          <% flightFromTheDatabase.destinations.forEach(function(d){ %> 
+          <% flight.destinations.forEach(function(d){ %> 
           <td><%= d.airport %> </td>
-          <td><%= d.arrival.toLocaleDateString() %></td>
+          <td><%= d.arrival %></td>
         </tr>
      <% });%>
      <% } else { %>
@@ -43,7 +43,7 @@
       <% } %>
       </tbody>
     </table>
-    <form id="add-destination" action="destinations/flights<%= flight._id %>/ " method="POST">
+    <form id="add-destination" action="/flights/<%= flight._id %>/destinations" method="POST">
       <label>Airport</label>
       <select name="airport">
        <option value="DEN">DEN</option>
@@ -53,7 +53,7 @@
        <option value="SAN">SAN</option>
       </select>
       <label>Arrival Time</label>
-      <input type="datetime-local" name="arrival" value="arrival">
+      <input type="datetime-local" name="arrival">
       <input type="submit" value="Add Destination">
     </form> 
   </div>
