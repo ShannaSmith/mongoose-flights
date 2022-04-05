@@ -12,7 +12,7 @@
   <div class="card-header">Flight Center</div>
   <div class="card-body">
     <h5 class="card-title">Ticket Information</h5>
-    <form method="POST" action='/flights/<%= flight._id %>/tickets'>
+    <form method="POST" action='/flights/<%= flightId%>/tickets'>
     <label> Pick Seat Assignment:</label>
     <input name="seat" required pattern="[A-F][1-9]\d?">
     <br/>

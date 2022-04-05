@@ -4,10 +4,14 @@ const Flight = require('../models/flight');
 const Ticket = require('../models/ticket');
 
 
-function show(req, res) {
-    Flight.findById(req.params.id, function ( err, flightFromTheDatabase){
-        res.render("flights/show", {title: "Flight Detail", flight: flightFromTheDatabase});
-    })
+
+function show(req, res){ 
+    Flight.findById(req.params.id, function (err, flight) {
+        console.log(flight)
+        Ticket.find({ flight: flight._id }, function (err, tickets) {
+            res.render('flights/show', { tickets, title: 'Flight Detail', flight });
+        })
+    });
 }
 
 function newClientFlight(req, res) {
@@ -21,14 +25,11 @@ function newClientFlight(req, res) {
 
 
 function index(req, res) {
-    Flight.find({}, function (err, flight) {
-        Ticket.find({flight: flight._id}, function(err, ticket){
-            res.render("flights/show", {
-                flight: flight,
-                ticket: ticket, 
+    Flight.find({}, function (err, flights) {
+        console.log(flights);
+            res.render("flights/index", {
+                flights: flights,             
                 title: "Flight Log"
-        })
-        console.log(flight);
         });
     });
 }

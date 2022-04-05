@@ -3,15 +3,19 @@ const Ticket = require('../models/ticket');
 
 
 function create(req, res){
-    req.body.flight = req.params.id
+    console.log(req.params.id);
+   let flightId = req.params.id;
+   console.log(req.body)
+    req.body.flight = flightId
+    console.log(req.body.flight);
     Ticket.create(req.body, function(err, ticket){
-        res.redirect(`/flights/${ticket.flight}`);
+        res.redirect(`/flights/${flightId}`);
     })
 }
 function newTicket(req, res){
     res.render('tickets/new', {
         title: 'Get Ticket',
-        flight: req.params.id
+        flightId: req.params.id,
     })
 }
 

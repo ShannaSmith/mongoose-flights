@@ -57,7 +57,7 @@
       <input type="submit" value="Add Destination">
     </form> 
     <h5>Ticket Kiosk</h5>
-   <% if (ticket.length) { %>
+   <% if (tickets.length) { %>
     <table class=" card-text table table-striped">
       <thead>
         <tr>
@@ -67,7 +67,7 @@
       </thead>
      <tbody>     
         <tr>
-          <% ticket.forEach(function(t) { %>
+          <% tickets.forEach(function(t) { %>
                 <td><%= t.seat %></td>
                 <td>$<%= t.price %></td>
           </tr>
@@ -75,9 +75,9 @@
         </tbody>
         </table>
         <% } else { %>
-         <h5>All Flights are Fully Booked, Thank you for Flying with Flight World!</h5>
+         <h5>Ticket Info Not Available</h5>
          <% } %> 
-         <a href="/flights/<%=flight._id%>/tickets/new">Buy Ticket</a>
+         
          <h5>Destinations:</h5>
          <% if (flight.destinations.length) { %>
           <table class=" card-text table table-striped">
@@ -100,6 +100,7 @@
               <% } else { %>
                <h5>No New Flights</h5>    
          <% } %>
+         <section><a href="/flights/<%=flight._id%>/tickets/new">Buy Ticket</a></section>
   </div>
 </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
